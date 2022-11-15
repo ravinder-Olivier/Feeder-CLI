@@ -1,0 +1,26 @@
+{
+  "name": "feeder-cli",
+  "version": "1.0.0",
+  "description": "A npm based terminal app for rss reading",
+  "main": "./bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ravinder-Olivier/Feeder-CLI.git"
+  },
+  "author": "Ravinder olivier Singh Dadiala <ravinder-Olivier@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ravinder-Olivier/Feeder-CLI/issues"
+  },
+  "homepage": "https://github.com/ravinder-Olivier/Feeder-CLI#readme",
+  "bin": {
+    "hello": "./bin/index.js"
+  },
+  "dependencies": {
+    "boxen": "4.0",
+    "chalk": "2.4"
+  }
+}
