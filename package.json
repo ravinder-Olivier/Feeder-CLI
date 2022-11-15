@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/ravinder-Olivier/Feeder-CLI#readme",
   "bin": {
-    "hello": "./bin/index.js"
+    "feeder": "./bin/index.js"
   },
   "dependencies": {
     "boxen": "4.0",

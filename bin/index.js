@@ -1,12 +1,10 @@
 #!/usr/bin/env node
-
 const yargs = require("yargs");
+const chalk = require("chalk");
+const boxen = require("boxen");
 
 const options = yargs
- .usage("Usage: -n <name>")
- .option("n", { alias: "name", describe: "Your name", type: "string", demandOption: true })
- .argv;
+.usage("Usage: -s <setup>")
+.option ("s", { alias: "setup", describe: "Setup Feeder-CLI", type: "string", demandOption: true})
 
-const greeting = `Hello, ${options.name}!`;
-
-console.log(greeting);
+console.log("Welcome")
