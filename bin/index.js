@@ -18,10 +18,14 @@ const options = yargs
       })
     },
     function (argv) {
-    console.log("Please go to your Github dashboard, click the link that says Subscribe to your RSS Feed");
-    console.log("Copy the link and paste it here, **MAKE SURE THERE ARE NO FORMATTING ARTIFACTS**");
+    console.log("Please go to your Github dashboard, right click on the subscribe to your rss feed link, and click copy link");
+    console.log("Copy the link and paste it here, with *double quotes around* **MAKE SURE THERE ARE NO FORMATTING ARTIFACTS**");
     const newrssurl = prompt("");
-    console.log(newrssurl, "This is the url you inputted")
+    //keytar 
+    keytar.setPassword('Feeder-CLI', "github", newrssurl);
+    const secret = keytar.getPassword('Feeder-CLI', 'github');
+    console.log("Accepted")
+    process.exit()
     }
   )
   .help()
