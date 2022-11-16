@@ -10,5 +10,5 @@ npm install -g .
 Test:
 
 ```bash
-feeder -s
+feeder -u
 ```
