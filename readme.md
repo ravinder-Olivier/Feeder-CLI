@@ -4,11 +4,11 @@
 
 ```bash
 npm install
-npm install -g .
+npm install . -g 
 ```
 
-Test:
-
+Testing:
+_In project directory run:_
 ```bash
-feeder -u
+node .
 ```
