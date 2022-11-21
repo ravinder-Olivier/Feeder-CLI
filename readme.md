@@ -1,5 +1,5 @@
 # Feeder-CLI
-![](https://img.shields.io/appveyor/build/ravinder-Olivier/Feeder-CLI)
+![License](https://img.shields.io/github/license/ravinder-Olivier/Feeder-CLI)
 ## Dev
 
 The code itself is in the /bin folder due to the CLI nature of the project
