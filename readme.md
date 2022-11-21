@@ -2,6 +2,8 @@
 
 ## Dev
 
+The code itself is in the /bin folder due to the CLI nature of the project
+
 ```bash
 npm install
 npm install . -g 
