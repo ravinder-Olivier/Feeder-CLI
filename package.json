@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "boxen": "7.0",
-    "chalk": "2.4",
+    "chalk": "5.1",
     "delay": "^5.0.0",
     "keytar": "^7.9.0",
     "prompt-sync": "^4.2.0",
