@@ -2,7 +2,7 @@
   "name": "feeder-cli",
   "version": "3.0.0",
   "description": "A CLI app for checking your github dashboard from anywhere! Powered by Node",
-  "main": "./bin/index.js",
+  "main": "./bin/index.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,21 +10,29 @@
     "type": "git",
     "url": "git+https://github.com/ravinder-Olivier/Feeder-CLI.git"
   },
-  "author": "Ravinder olivier Singh Dadiala <ravinder-Olivier@outlook.com>",
+  "author": "Ravinder Olivier Singh Dadiala <ravinder-Olivier@outlook.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ravinder-Olivier/Feeder-CLI/issues"
   },
   "homepage": "https://github.com/ravinder-Olivier/Feeder-CLI#readme",
   "bin": {
-    "feeder": "./bin/index.js"
+    "feeder": "./bin/index.mjs"
   },
   "dependencies": {
     "boxen": "7.0",
     "chalk": "5.1",
-    "delay": "^5.0.0",
+    "inquirer": "^9.1.4",
     "keytar": "^7.9.0",
-    "prompt-sync": "^4.2.0",
+    "node-fetch": "^2.6.1",
     "yargs": "17.6"
+  },
+  "pkg": {
+    "targets": [
+      "node14-linux-x64",
+      "node14-macos-x64",
+      "node14-win-x64"
+    ],
+    "outputPath": "release"
   }
 }

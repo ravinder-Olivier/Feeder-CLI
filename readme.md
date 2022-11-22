@@ -1,8 +1,11 @@
 # Feeder-CLI
+
 ![License](https://img.shields.io/github/license/ravinder-Olivier/Feeder-CLI)
+
 ## Dev
 
 The code itself is in the /bin folder due to the CLI nature of the project
+To quickly tet code while developing run 'node .',
 
 ```bash
 npm install
@@ -13,8 +16,8 @@ Testing:
 _In project directory run:_
 
 ```bash
-# Add RSS Url
-feeder update
+# Manage RSS URL
+feeder manage
 # Run Check
 feeder
 ```
