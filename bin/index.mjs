@@ -69,40 +69,37 @@ yargs(hideBin(process.argv))
           console.log("This part is still under development, thanks for using! Feeder-CLI is an open-source project, please consider contributing to keep us Feeding :)");
           console.log("This process will now exit shortly.");
           const doicont = false
-          exit()
+          process.exit()
         });
     }
   )
   .command(
     'check',
     'View Your feed',
-    function (yargs) {
-      return yargs.option('c', {
-        alias: 'view',
-        describe: 'View your Feed'
-      })
-    },
     function (argv) {
     //RSS Function
-    const feedUrl = "<FeedURL>"
-
-
-    const parse = async url => {
-      const feed = await new RSSParser().parseURL(url);
-    
-      console.log(feed.title);
-    
-      feed.items.forEach(item => {
+    inquirer
+    .prompt([
+      {
+        name: "feedUrl",
+        type: "input",
+        message: "Please go to your Github dashboard, right click on the subscribe to your rss feed link, and click copy link and paste it *without formatting artifacts*"
+      }])
+      .then((answer) => {
+        const feedUrl = answer.feedUrl;
+        
+        const parse = async url => {
+          const feed = await new RSSParser().parseURL(url);
+          console.log(feed.title);
+          feed.items.forEach(item => {
           console.log(`${item.title} - ${item.link}\n\n`);
-      });
-    };
-    
-    console.log("Parsing " + feedUrl);
-    
-    parse(feedUrl);
-    process.exit()
-    }
-  )
+        });
+};
+      console.log("Parsing " + feedUrl);
+
+      parse(feedUrl);
+        
+  },)})
   .help()
   .demandCommand(1, "You need to use either 'check' or 'manage' to use Feeder")
   .argv
