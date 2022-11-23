@@ -4,16 +4,6 @@
  Licensed under the MIT License (the "License");
  you may not use this file except in compliance with the License.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -27,6 +17,7 @@ import { hideBin } from 'yargs/helpers';
 import chalk from 'chalk';
 import boxen from 'boxen';
 import inquirer from 'inquirer';
+import RSSParser from 'rss-parser';
 
 
 yargs(hideBin(process.argv))
@@ -41,7 +32,7 @@ yargs(hideBin(process.argv))
     },
     function (argv) {
       console.log("Welcome to Feeder-CLI Preferences")
-
+      // Preferences Function
       inquirer
         .prompt([
           {
@@ -86,21 +77,29 @@ yargs(hideBin(process.argv))
     'check',
     'View Your feed',
     function (yargs) {
-      return yargs.option('m', {
+      return yargs.option('c', {
         alias: 'view',
         describe: 'View your Feed'
       })
     },
     function (argv) {
-	  var eventsnum = "error not made yet";
-    // collect data for RSS Check
+    //RSS Function
+    const feedUrl = "<FeedURL>"
 
 
-    console.log("You have", eventsnum, "Events today");
-
-
-
-    console.log("*events*");
+    const parse = async url => {
+      const feed = await new RSSParser().parseURL(url);
+    
+      console.log(feed.title);
+    
+      feed.items.forEach(item => {
+          console.log(`${item.title} - ${item.link}\n\n`);
+      });
+    };
+    
+    console.log("Parsing " + feedUrl);
+    
+    parse(feedUrl);
     process.exit()
     }
   )
