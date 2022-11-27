@@ -5,8 +5,10 @@ name: Node.js Package
 
 on:
   release:
-    manual:
-
+    release:
+    types: [created]
+    
+    
 jobs:
   build:
     runs-on: ubuntu-latest
