@@ -4,7 +4,7 @@
   "description": "A CLI app for checking your github dashboard from anywhere! Powered by Node",
   "main": "./bin/index.mjs",
   "scripts": {
-    check: "node . check",
+    "check": "node . check",
     "manage": "node . manage"
   },
   "repository": {
