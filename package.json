@@ -2,7 +2,7 @@
   "name": "feeder-cli",
   "version": "4.0.0",
   "description": "A CLI app for checking your github dashboard from anywhere! Powered by Node",
-  "main": "./bin/index.mjs",
+  "main": "./bin/index.cjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,19 +18,24 @@
   },
   "homepage": "https://github.com/ravinder-Olivier/Feeder-CLI#readme",
   "bin": {
-    "feeder": "./bin/index.mjs"
+    "feeder": "./bin/index.cjs"
   },
   "dependencies": {
-    "boxen": "7.0",
-    "chalk": "5.1",
-    "eslint": "^8.28.0",
-    "esm": "^3.2.25",
-    "inquirer": "^9.1.4",
+    "chalk": "^4.1.0",
+    "inquirer": "^8.2.5",
     "keytar": "^7.9.0",
     "node-fetch": "^2.6.1",
-    "pkg": "^5.8.0",
+    "prompt": "^1.3.0",
     "rss-parser": "^3.12.0",
     "yargs": "17.6"
+  },
+  "devDependencies": {
+    "eslint": "^8.28.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.5.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "pkg": "^5.8.0"
   },
   "pkg": {
     "targets": [
@@ -38,6 +43,9 @@
       "latest-macos-x64",
       "latest-win-x64"
     ],
-    "outputPath": "release"
+    "outputPath": "release",
+    "publishConfig": {
+      "registry": "https://npm.pkg.github.com/ravinder-Olivier/feeder-cli"
+    }
   }
 }

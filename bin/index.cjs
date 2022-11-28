@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/*Copyright 2022 and onwards Ravinder Olivier Singh Dadiala <ravinder-Olivier@outlook.com>.
+/* Copyright 2022 and onwards Ravinder Olivier Singh Dadiala <ravinder-Olivier@outlook.com>.
 
  Licensed under the MIT License (the "License");
  you may not use this file except in compliance with the License.
@@ -16,11 +16,10 @@ SOFTWARE.
 const yargs = require('yargs/yargs')
 const { hideBin } = require('yargs/helpers')
 const argv = yargs(hideBin(process.argv)).argv
-const chalk = require('chalk');
-const inquirer = require('inquirer');
-const prompt = require("basic-prompt");
-let RSSParser = require('rss-parser');
-
+const chalk = require('chalk')
+const inquirer = require('inquirer')
+const prompt = require('prompt')
+const RSSParser = require('rss-parser')
 
 yargs(hideBin(process.argv))
   .command(
@@ -33,70 +32,74 @@ yargs(hideBin(process.argv))
       })
     },
     function (argv) {
-      console.log("Welcome to Feeder-CLI Preferences")
+      console.log('Welcome to Feeder-CLI Preferences')
       // Preferences Function
       inquirer
         .prompt([
           {
-            name: "manageType",
-            type: "list",
-            message: chalk.underline("Scroll using arrow keys"),
-            choices: ["Update RSS URL", "Change Display Options", "Other Preferences"]
+            name: 'manageType',
+            type: 'list',
+            message: chalk.underline('Scroll using arrow keys'),
+            choices: ['Update RSS URL', 'Change Display Options', 'Other Preferences']
           },
           {
-            name: "rssUrlConfig",
-            type: "input",
-            message: "Please go to your Github dashboard, right click on the subscribe to your rss feed link, and click copy link and paste it *without formatting artifacts*",
-            when: (answers) => answers.manageType === "Update RSS URL"
+            name: 'rssUrlConfig',
+            type: 'input',
+            message: 'Please go to your Github dashboard, right click on the subscribe to your rss feed link, and click copy link and paste it *without formatting artifacts*',
+            when: (answers) => answers.manageType === 'Update RSS URL'
           },
           {
-            name: "changeDisplayOptions",
-            type: "list",
-            message: "Change Display Options",
-            choices: ["Change recentness of displayed events", "Change Descriptiveness of information displayed in Feed"],
-            when: (answers) => answers.manageType === "Change Display Options",
+            name: 'changeDisplayOptions',
+            type: 'list',
+            message: 'Change Display Options',
+            choices: ['Change recentness of displayed events', 'Change Descriptiveness of information displayed in Feed'],
+            when: (answers) => answers.manageType === 'Change Display Options'
           },
           {
-            name: "otherPreferences",
-            type: "list",
-            message: "other Preferences",
-            choices: ["Change recentness of displayed events", "Change Descriptiveness of information displayed in Feed"],
-            when: (answers) => answers.manageType === "Other Preferences",
-          },
+            name: 'otherPreferences',
+            type: 'list',
+            message: 'other Preferences',
+            choices: ['Change recentness of displayed events', 'Change Descriptiveness of information displayed in Feed'],
+            when: (answers) => answers.manageType === 'Other Preferences'
+          }
         ])
         .then((answer) => {
-          const manageType = answer.manageType;
-          const rssUrlConfig = answer.rssUrlConfig;
-          const changeDisplayoptions = answer.changeDisplayoptions;
-          console.log("This part is still under development, thanks for using! Feeder-CLI is an open-source project, please consider contributing to keep us Feeding :)");
-          console.log("This process will now exit shortly.");
+          const manageType = answer.manageType
+          const rssUrlConfig = answer.rssUrlConfig
+          const changeDisplayoptions = answer.changeDisplayoptions
+          console.log('This part is still under development, thanks for using! Feeder-CLI is an open-source project, please consider contributing to keep us Feeding :)')
+          console.log('This process will now exit shortly.')
           const doicont = false
           process.exit()
-        });
+        })
     }
   )
   .command(
     'check',
     'View Your feed',
+
     function (argv) {
-    //RSS Function
-    (async () => {
-      console.log("Please go to your Github dashboard, right click on the subscribe to your rss feed link, and click copy link and paste it *without formatting artifacts*")
-      const FeedUrl = await prompt('')
-    })()      
-    const parse = async url => {
-      const feed = await new RSSParser().parseURL(url);
-  
-      console.log(feed.title);
-  
-      feed.items.forEach(item => {
-          console.log(`${item.title} - ${item.link}\n\n`);
-      });
-  };
-  
-  console.log("Parsing " + feedUrl);
-  
-  parse(feedUrl);}      
+    // RSS Function
+    var feedUrl
+    var fdurl
+      async function getfeed () {
+        console.log('Please go to your Github dashboard, right click on the subscribe to your rss feed link address, and click copy link and paste it *without formatting artifacts*')
+        prompt.start()
+        prompt.get(['fdurl'])
+        const { fdurl } = await prompt.get('fdurl')
+        console.log(fdurl)
+        var feedUrl = fdurl
+      
+        const feed = await new RSSParser().parseURL(feedUrl)
+
+        console.log(feed.title)
+
+        feed.items.forEach(item => {
+          console.log(`${item.title} - ${item.link}\n\n`)
+        })
+      }
+    getfeed()
+    }
   )
   .help()
   .demandCommand(1, "You need to use either 'check' or 'manage' to use Feeder-CLI")
