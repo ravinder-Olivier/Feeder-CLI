@@ -2,10 +2,15 @@
 
 ![License](https://img.shields.io/github/license/ravinder-Olivier/Feeder-CLI)
 
+
+THIS PROJECT IS STILL IN DEVELOPMENT! NOT ALL FEATURES MAY WORK
+
+
+
 ## Dev
 
-The code itself is in the /bin folder due to the CLI nature of the project
-To quickly tet code while developing run 'node .',
+The code itself is in the /bin folder due to the CLI nature of the project.
+To quickly test code while developing run 'node .',
 
 ```bash
 npm install

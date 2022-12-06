@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-expressions */
 /* Copyright 2022 and onwards Ravinder Olivier Singh Dadiala <ravinder-Olivier@outlook.com>.
 
  Licensed under the MIT License (the "License");
@@ -18,8 +20,10 @@ const { hideBin } = require('yargs/helpers')
 const argv = yargs(hideBin(process.argv)).argv
 const chalk = require('chalk')
 const inquirer = require('inquirer')
+// eslint-disable-next-line no-unused-vars
 const prompt = require('prompt')
 const RSSParser = require('rss-parser')
+const keytar = require('keytar')
 
 yargs(hideBin(process.argv))
   .command(
@@ -63,14 +67,29 @@ yargs(hideBin(process.argv))
             when: (answers) => answers.manageType === 'Other Preferences'
           }
         ])
-        .then((answer) => {
+        .then(async (answer) => {
           const manageType = answer.manageType
           const rssUrlConfig = answer.rssUrlConfig
           const changeDisplayoptions = answer.changeDisplayoptions
           console.log('This part is still under development, thanks for using! Feeder-CLI is an open-source project, please consider contributing to keep us Feeding :)')
           console.log('This process will now exit shortly.')
-          const doicont = false
-          process.exit()
+          if (manageType === 'rssUrlConfig') {
+            console.log('Please go to your Github dashboard, right click on the subscribe to your rss feed link address, and click copy link and paste it *without formatting artifacts*')
+            prompt.start()
+            prompt.get(['fdurl'])
+            const fdurl = await prompt.get('fdurl')
+            console.log('You entered', fdurl, 'Should this be saved? y or n')
+            prompt.start()
+            prompt.get(['confirmationrss'])
+            const confirmationrss = await prompt.get('confirmationrss')
+            if (confirmationrss === 'y') {
+              // keytar save
+            } else {
+              console.log('This feature has not been developed yet, sorry!')
+              console.log('Thanks for using Feeder-CLI')
+              process.exit()
+            }
+          }
         })
     }
   )
@@ -78,27 +97,20 @@ yargs(hideBin(process.argv))
     'check',
     'View Your feed',
 
-    function (argv) {
+    function () {
     // RSS Function
-    var feedUrl
-    var fdurl
       async function getfeed () {
-        console.log('Please go to your Github dashboard, right click on the subscribe to your rss feed link address, and click copy link and paste it *without formatting artifacts*')
-        prompt.start()
-        prompt.get(['fdurl'])
-        const { fdurl } = await prompt.get('fdurl')
-        console.log(fdurl)
-        var feedUrl = fdurl
-      
+        console.log("Here's your feed!")
+        // async function lower
+        const feedUrl = await keytar.getPassword('Feeder-CLI', 'github')
         const feed = await new RSSParser().parseURL(feedUrl)
-
         console.log(feed.title)
-
         feed.items.forEach(item => {
           console.log(`${item.title} - ${item.link}\n\n`)
         })
       }
-    getfeed()
+
+      getfeed()
     }
   )
   .help()
