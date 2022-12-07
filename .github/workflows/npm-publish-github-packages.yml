@@ -27,7 +27,7 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: '@ravinder-olivier'
       - run: npm install --include-dev
-      - run: echo registry=https://npm.pkg.github.com/ravinder-olivier >> .npmrc
+      - run: echo registry=https://npm.pkg.github.com/ravinder-olivier/feeder-cli >> .npmrc
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.PUBLISH_GITHUB_TOKEN}}
