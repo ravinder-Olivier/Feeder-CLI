@@ -14,22 +14,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 16
-      - run: npm install --include-dev
-
-  publish-npm:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.PUBLISH_NPM_TOKEN}}
-
+      - run: npm install --include-de
+      
   publish-gpr:
     needs: build
     runs-on: ubuntu-latest
@@ -40,7 +26,7 @@ jobs:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
           scope: '@ravinder-olivier'
-      - run: npm ci
+      - run: install --include-dev
       - run: echo registry=https://npm.pkg.github.com/ravinder-olivier >> .npmrc
       - run: npm publish
         env:
