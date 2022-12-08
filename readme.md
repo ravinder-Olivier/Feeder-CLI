@@ -1,6 +1,6 @@
 # Feeder-CLI
 
-![License](https://img.shields.io/github/license/ravinder-Olivier/Feeder-CLI)
+![License](https://img.shields.io/github/license/ravinder-Olivier/Feeder-CLI) ![Package Version](https://img.shields.io/github/package-json/v/ravinder-Olivier/feeder-cli)
 
 
 THIS PROJECT IS STILL IN DEVELOPMENT! NOT ALL FEATURES MAY WORK! Features that are not working include:
