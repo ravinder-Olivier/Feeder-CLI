@@ -44,9 +44,6 @@
       "latest-macos-x64",
       "latest-win-x64"
     ],
-    "outputPath": "release",
-    "publishConfig": {
-      "registry": "https://npm.pkg.github.com/ravinder-Olivier"
-    }
+    "outputPath": "release"
   }
 }
