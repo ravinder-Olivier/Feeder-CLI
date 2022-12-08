@@ -3,9 +3,19 @@
 ![License](https://img.shields.io/github/license/ravinder-Olivier/Feeder-CLI)
 
 
-THIS PROJECT IS STILL IN DEVELOPMENT! NOT ALL FEATURES MAY WORK
+THIS PROJECT IS STILL IN DEVELOPMENT! NOT ALL FEATURES MAY WORK! Features that are not working include:
+- Changing Feed Display settings
 
+## Install
 
+```bash
+npm install feeder-cli -g
+```
+Usage
+```bash
+feeder check
+feeder manage
+```
 
 ## Dev
 
