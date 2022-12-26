@@ -15,121 +15,120 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
 
-const yargs = require("yargs/yargs");
-const { hideBin } = require("yargs/helpers");
-const argv = yargs(hideBin(process.argv)).argv;
-const chalk = require("chalk");
-const inquirer = require("inquirer");
+const yargs = require('yargs/yargs')
+const { hideBin } = require('yargs/helpers')
+const argv = yargs(hideBin(process.argv)).argv
+const chalk = require('chalk')
+const inquirer = require('inquirer')
 // eslint-disable-next-line no-unused-vars
-const prompt = require("prompt");
-const RSSParser = require("rss-parser");
-const keytar = require("keytar");
+const prompt = require('prompt')
+const RSSParser = require('rss-parser')
+const keytar = require('keytar')
 
 yargs(hideBin(process.argv))
   .command(
-    "manage",
-    "Manage Feeder-CLI Settings",
+    'manage',
+    'Manage Feeder-CLI Settings',
     function (yargs) {
-      return yargs.option("m", {
-        alias: "update",
-        describe: "Manage Settings",
-      });
+      return yargs.option('m', {
+        alias: 'update',
+        describe: 'Manage Settings'
+      })
     },
     function (argv) {
-      console.log("Welcome to Feeder-CLI Preferences");
+      console.log('Welcome to Feeder-CLI Preferences')
       // Preferences Function
       inquirer
         .prompt([
           {
-            name: "manageType",
-            type: "list",
-            message: chalk.underline("Scroll using arrow keys"),
+            name: 'manageType',
+            type: 'list',
+            message: chalk.underline('Scroll using arrow keys'),
             choices: [
-              "Update RSS URL",
-              "Change Display Options",
-              "Other Preferences",
-            ],
+              'Update RSS URL',
+              'Change Display Options',
+              'Other Preferences'
+            ]
           },
           {
-            name: "rssUrlConfig",
-            type: "input",
+            name: 'rssUrlConfig',
+            type: 'input',
             message:
-              "Please go to your Github dashboard, right click on the subscribe to your rss feed link, and click copy link and paste it *without formatting artifacts*",
-            when: (answers) => answers.manageType === "Update RSS URL",
+              'Please go to your Github dashboard, right click on the subscribe to your rss feed link, and click copy link and paste it *without formatting artifacts*',
+            when: (answers) => answers.manageType === 'Update RSS URL'
           },
           {
-            name: "changeDisplayOptions",
-            type: "list",
-            message: "Change Display Options",
+            name: 'changeDisplayOptions',
+            type: 'list',
+            message: 'Change Display Options',
             choices: [
-              "Change recentness of displayed events",
-              "Change Descriptiveness of information displayed in Feed",
+              'Change recentness of displayed events',
+              'Change Descriptiveness of information displayed in Feed'
             ],
-            when: (answers) => answers.manageType === "Change Display Options",
+            when: (answers) => answers.manageType === 'Change Display Options'
           },
           {
-            name: "otherPreferences",
-            type: "list",
-            message: "other Preferences",
+            name: 'otherPreferences',
+            type: 'list',
+            message: 'other Preferences',
             choices: [
-              "Change recentness of displayed events",
-              "Change Descriptiveness of information displayed in Feed",
+              'Change recentness of displayed events',
+              'Change Descriptiveness of information displayed in Feed'
             ],
-            when: (answers) => answers.manageType === "Other Preferences",
-          },
+            when: (answers) => answers.manageType === 'Other Preferences'
+          }
         ])
         .then(async (answer) => {
-          const manageType = answer.manageType;
-          const rssUrlConfig = answer.rssUrlConfig;
-          const changeDisplayoptions = answer.changeDisplayoptions;
+          const manageType = answer.manageType
+          const rssUrlConfig = answer.rssUrlConfig
+          const changeDisplayoptions = answer.changeDisplayoptions
           console.log(
-            "This part is still under development, thanks for using! Feeder-CLI is an open-source project, please consider contributing to keep us Feeding :)"
-          );
-          console.log("This process will now exit shortly.");
-          if (manageType === "rssUrlConfig") {
+            'This part is still under development, thanks for using! Feeder-CLI is an open-source project, please consider contributing to keep us Feeding :)'
+          )
+          console.log('This process will now exit shortly.')
+          if (manageType === 'rssUrlConfig') {
             console.log(
-              "Please go to your Github dashboard, right click on the subscribe to your rss feed link address, and click copy link and paste it *without formatting artifacts*"
-            );
-            prompt.start();
-            prompt.get(["fdurl"]);
-            const fdurl = await prompt.get("fdurl");
-            console.log("You entered", fdurl, "Should this be saved? y or n");
-            prompt.start();
-            prompt.get(["confirmationrss"]);
-            const confirmationrss = await prompt.get("confirmationrss");
-            if (confirmationrss === "y") {
+              'Please go to your Github dashboard, right click on the subscribe to your rss feed link address, and click copy link and paste it *without formatting artifacts*'
+            )
+            prompt.start()
+            prompt.get(['fdurl'])
+            const fdurl = await prompt.get('fdurl')
+            console.log('You entered', fdurl, 'Should this be saved? y or n')
+            prompt.start()
+            prompt.get(['confirmationrss'])
+            const confirmationrss = await prompt.get('confirmationrss')
+            if (confirmationrss === 'y') {
               // keytar save
             } else {
-              console.log("This feature has not been developed yet, sorry!");
-              console.log("Thanks for using Feeder-CLI");
-              process.exit();
+              console.log('This feature has not been developed yet, sorry!')
+              console.log('Thanks for using Feeder-CLI')
+              process.exit()
             }
           }
-        });
+        })
     }
   )
   .command(
-    "check",
-    "View Your feed",
+    'check',
+    'View Your feed',
 
     function () {
       // RSS Function
-      async function getfeed() {
-        console.log("Here's your feed!");
+      async function getfeed () {
+        console.log("Here's your feed!")
         // async function lower
-        const feedUrl = await keytar.getPassword("Feeder-CLI", "github");
-        const feed = await new RSSParser().parseURL(feedUrl);
-        console.log(feed.title);
+        const feedUrl = await keytar.getPassword('Feeder-CLI', 'github')
+        const feed = await new RSSParser().parseURL(feedUrl)
+        console.log(feed.title)
         feed.items.forEach((item) => {
-          console.log(`${item.title} - ${item.link}\n\n`);
-        });
+          console.log(`${item.title} - ${item.link}\n\n`)
+        })
       }
-
-      getfeed();
+      getfeed()
     }
   )
   .help()
   .demandCommand(
     1,
     "You need to use either 'check' or 'manage' to use Feeder-CLI"
-  ).argv;
+  ).argv
