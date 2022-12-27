@@ -24,6 +24,7 @@ const inquirer = require('inquirer')
 const prompt = require('prompt')
 const RSSParser = require('rss-parser')
 const keytar = require('keytar')
+const log = console.log;
 
 yargs(hideBin(process.argv))
   .command(
@@ -83,9 +84,9 @@ yargs(hideBin(process.argv))
           const rssUrlConfig = answer.rssUrlConfig
           const changeDisplayoptions = answer.changeDisplayoptions
           console.log(
-            'This part is still under development, thanks for using! Feeder-CLI is an open-source project, please consider contributing to keep us Feeding :)'
+            'This part is still under development, thanks for using! Feeder-CLI is an', chalk.underline('open-source project'), ', please consider contributing to keep us Feeding :)'
           )
-          console.log('This process will now exit shortly.')
+          console.log(chalk.italic('This process will now exit shortly.'))
           if (manageType === 'rssUrlConfig') {
             console.log(
               'Please go to your Github dashboard, right click on the subscribe to your rss feed link address, and click copy link and paste it *without formatting artifacts*'
