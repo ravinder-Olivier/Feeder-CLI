@@ -26,6 +26,11 @@ const RSSParser = require('rss-parser')
 const keytar = require('keytar')
 const log = console.log;
 
+// Yargs is used, only yargs commands will execute, ex] feeder manage, or feeder check, not using an option will result in the options listed rather then any function
+
+
+
+
 yargs(hideBin(process.argv))
   .command(
     'manage',
@@ -37,8 +42,9 @@ yargs(hideBin(process.argv))
       })
     },
     function (argv) {
+      // This is the manage function, all the code for manage lives in these brace brackets
       console.log('Welcome to Feeder-CLI Preferences')
-      // Preferences Function
+      // Following is an inquirer prompt, which gets users selected options
       inquirer
         .prompt([
           {
@@ -80,6 +86,7 @@ yargs(hideBin(process.argv))
           }
         ])
         .then(async (answer) => {
+	  // This part is ran after the inquirer prompts
           const manageType = answer.manageType
           const rssUrlConfig = answer.rssUrlConfig
           const changeDisplayoptions = answer.changeDisplayoptions
@@ -117,7 +124,7 @@ yargs(hideBin(process.argv))
       // RSS Function
       async function getfeed () {
         console.log("Here's your feed!")
-        // async function lower
+        // below async function below gets the keytar password, if there's no password present the program will error at the getfeed function
         const feedUrl = await keytar.getPassword('Feeder-CLI', 'github')
         const feed = await new RSSParser().parseURL(feedUrl)
         console.log(feed.title)
