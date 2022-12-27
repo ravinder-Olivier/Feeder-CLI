@@ -30,7 +30,7 @@ After you're done ``git commit -a`` with a short commit message
 
 ```bash
 # Quickly test the project from the base directory
-node .
+node . { check | manage }
 
 # Install the current code
 npm install . -g
