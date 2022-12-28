@@ -25,7 +25,8 @@ const prompt = require('prompt')
 const RSSParser = require('rss-parser')
 const keytar = require('keytar')
 const log = console.log
-const reverseArray = require('reverse-array');
+const reverseArray = require('reverse-array')
+const fs = require('fs')
 
 // Yargs is used, only yargs commands will execute, ex] feeder manage, or feeder check, not using an option will result in the options listed rather then any function
 
@@ -56,13 +57,6 @@ yargs(hideBin(process.argv))
             ]
           },
           {
-            name: 'rssUrlConfig',
-            type: 'input',
-            message:
-              'Please go to your Github dashboard, right click on the subscribe to your rss feed link, and click copy link and paste it *without formatting artifacts*',
-            when: (answers) => answers.manageType === 'Update RSS URL'
-          },
-          {
             name: 'changeDisplayOptions',
             type: 'list',
             message: 'Change Display Options',
@@ -71,45 +65,31 @@ yargs(hideBin(process.argv))
               'Change Descriptiveness of information displayed in Feed'
             ],
             when: (answers) => answers.manageType === 'Change Display Options'
-          },
-          {
-            name: 'otherPreferences',
-            type: 'list',
-            message: 'other Preferences',
-            choices: [
-              'Change recentness of displayed events',
-              'Change Descriptiveness of information displayed in Feed'
-            ],
-            when: (answers) => answers.manageType === 'Other Preferences'
           }
         ])
         .then(async (answer) => {
           // This part is ran after the inquirer prompts
           const manageType = answer.manageType
-          const rssUrlConfig = answer.rssUrlConfig
           const changeDisplayoptions = answer.changeDisplayoptions
-          console.log(
+          log(
             'This part is still under development, thanks for using! Feeder-CLI is an', chalk.underline('open-source project'), ', please consider contributing to keep us Feeding :)'
           )
-          console.log(chalk.italic('This process will now exit shortly.'))
-          if (manageType === 'rssUrlConfig') {
-            console.log(
+          if (manageType === 'Update RSS URL') {
+            log(
               'Please go to your Github dashboard, right click on the subscribe to your rss feed link address, and click copy link and paste it *without formatting artifacts*'
             )
             prompt.start()
-            prompt.get(['fdurl'])
-            const fdurl = await prompt.get('fdurl')
-            console.log('You entered', fdurl, 'Should this be saved? y or n')
-            prompt.start()
-            prompt.get(['confirmationrss'])
-            const confirmationrss = await prompt.get('confirmationrss')
-            if (confirmationrss === 'y') {
-              // keytar save
+            const { FeedURL, confirmation } = await prompt.get(['FeedURL', 'confirmation'])
+            if (confirmation === 'y') {
+              keytar.setPassword('Feeder=CLI', 'github', FeedURL)
             } else {
-              console.log('This feature has not been developed yet, sorry!')
-              console.log('Thanks for using Feeder-CLI')
+              log('Error, you typed', FeedURL, 'Please use y or n only!')
+              log('Process will soon exit. Thanks for using Feeder-CLI')
               process.exit()
             }
+          } else if (manageType === '') {
+            log('This process will exit soon')
+            process.exit()
           }
         })
     }
@@ -127,9 +107,11 @@ yargs(hideBin(process.argv))
         const feed = await new RSSParser().parseURL(feedUrl)
         log(feed.title)
         // If it's just logged then it'll be backwards, but to get it in order we have to make an array and then reverses it, then log it
+        // eslint-disable-next-line prefer-const
         let feedarray = []
         await feed.items.forEach((item) => {
           feedarray.push(`${item.title} - ${item.link}`)
+          feedarray.push('')
         })
         // Log a white, properly ordered feed
         log(reverseArray(feedarray))

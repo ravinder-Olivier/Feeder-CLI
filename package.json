@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/ravinder-Olivier/Feeder-CLI#readme",
   "bin": {
-    "feeder": "./bin/index.cjs"
+    "feeder": "./bin/index.cjs",
+    "feeder-settings": "./bin/feeder-settings.json"
   },
   "dependencies": {
     "chalk": "^4.1.0",
