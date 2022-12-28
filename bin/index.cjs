@@ -24,12 +24,10 @@ const inquirer = require('inquirer')
 const prompt = require('prompt')
 const RSSParser = require('rss-parser')
 const keytar = require('keytar')
-const log = console.log;
+const log = console.log
+const reverseArray = require('reverse-array');
 
 // Yargs is used, only yargs commands will execute, ex] feeder manage, or feeder check, not using an option will result in the options listed rather then any function
-
-
-
 
 yargs(hideBin(process.argv))
   .command(
@@ -86,7 +84,7 @@ yargs(hideBin(process.argv))
           }
         ])
         .then(async (answer) => {
-	  // This part is ran after the inquirer prompts
+          // This part is ran after the inquirer prompts
           const manageType = answer.manageType
           const rssUrlConfig = answer.rssUrlConfig
           const changeDisplayoptions = answer.changeDisplayoptions
@@ -123,14 +121,18 @@ yargs(hideBin(process.argv))
     function () {
       // RSS Function
       async function getfeed () {
-        console.log("Here's your feed!")
+        log("Here's your feed!")
         // below async function below gets the keytar password, if there's no password present the program will error at the getfeed function
         const feedUrl = await keytar.getPassword('Feeder-CLI', 'github')
         const feed = await new RSSParser().parseURL(feedUrl)
-        console.log(feed.title)
-        feed.items.forEach((item) => {
-          console.log(`${item.title} - ${item.link}\n\n`)
+        log(feed.title)
+        // If it's just logged then it'll be backwards, but to get it in order we have to make an array and then reverses it, then log it
+        let feedarray = []
+        await feed.items.forEach((item) => {
+          feedarray.push(`${item.title} - ${item.link}`)
         })
+        // Log a white, properly ordered feed
+        log(reverseArray(feedarray))
       }
       getfeed()
     }
