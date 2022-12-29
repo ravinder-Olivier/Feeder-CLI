@@ -6,10 +6,14 @@
         "eventsnum",
         "fdurl",
         "feedarray",
+        "feedparser",
         "feedreps",
         "getfeed",
+        "ghfeed",
         "keytar",
+        "logfeed",
         "newrssurl",
-        "promptvalue"
+        "promptvalue",
+        "simplequirer"
     ]
 }

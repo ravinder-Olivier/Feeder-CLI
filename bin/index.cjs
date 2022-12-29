@@ -19,14 +19,15 @@ const yargs = require('yargs/yargs')
 const { hideBin } = require('yargs/helpers')
 const argv = yargs(hideBin(process.argv)).argv
 const chalk = require('chalk')
-const inquirer = require('inquirer')
 // eslint-disable-next-line no-unused-vars
 const prompt = require('prompt')
 const RSSParser = require('rss-parser')
 const keytar = require('keytar')
 const log = console.log
+const inquirer = require('inquirer')
 const reverseArray = require('reverse-array')
 const fs = require('fs')
+const feeder = require('./feeder-functions.cjs')
 
 // Yargs is used, only yargs commands will execute, ex] feeder manage, or feeder check, not using an option will result in the options listed rather then any function
 
@@ -97,26 +98,16 @@ yargs(hideBin(process.argv))
   .command(
     'check',
     'View Your feed',
-
-    function () {
-      // RSS Function
-      async function getfeed () {
-        log("Here's your feed!")
-        // below async function below gets the keytar password, if there's no password present the program will error at the getfeed function
-        const feedUrl = await keytar.getPassword('Feeder-CLI', 'github')
-        const feed = await new RSSParser().parseURL(feedUrl)
-        log(feed.title)
-        // If it's just logged then it'll be backwards, but to get it in order we have to make an array and then reverses it, then log it
-        // eslint-disable-next-line prefer-const
-        let feedarray = []
-        await feed.items.forEach((item) => {
-          feedarray.push(`${item.title} - ${item.link}`)
-          feedarray.push('')
-        })
-        // Log a white, properly ordered feed
-        log(reverseArray(feedarray))
-      }
-      getfeed()
+    function (yargs) {
+      return yargs.option('m', {
+        alias: 'check',
+        describe: 'Check your feed'
+      })
+    },
+    async function () {
+      // calls the feeder-functions file
+      const logfeed = await feeder.getfeed()
+      log(logfeed)
     }
   )
   .help()
