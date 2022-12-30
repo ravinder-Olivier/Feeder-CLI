@@ -105,10 +105,8 @@ yargs(hideBin(process.argv))
       })
     },
     async function () {
-      // calls the feeder-functions file
-      const logarray = await feeder.getfeed()
-      const logstring = logarray.toString()
-      log(chalk.white(logstring.replaceAll(',', '')))
+      // calls the feeder-functions file to get the feed
+      log(await feeder.getfeed())
     }
   )
   .help()

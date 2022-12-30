@@ -1,4 +1,5 @@
 'use strict'
+// Feed Function
 const getfeed = async () => {
   const chalk = require('chalk')
   const RSSParser = require('rss-parser')
@@ -18,7 +19,7 @@ const getfeed = async () => {
     feedarray.push('\n', '\n')
   })
   const ghfeed = (reverseArray(feedarray))
-  return (ghfeed)
+  const logstring = ghfeed.toString()
+  return (chalk.white(logstring.replaceAll(',', '')))
 }
-
 exports.getfeed = getfeed
