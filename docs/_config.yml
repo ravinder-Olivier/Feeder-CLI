@@ -2,3 +2,5 @@ title: Feeder-CLI
 description: Your Github Feed In The CLI
 show_downloads: false
 theme: jekyll-theme-hacker
+github:
+  Npm: https://www.npmjs.com/package/feeder-cli
