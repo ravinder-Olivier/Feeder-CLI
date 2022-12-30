@@ -20,10 +20,5 @@ const getfeed = async () => {
   const ghfeed = (reverseArray(feedarray))
   return (ghfeed)
 }
-const nocomma = () => {
-  // NOT FINISHED
-  return string.replace(/\s/g, ',')
-}
 
 exports.getfeed = getfeed
-exports.nocomma = nocomma
