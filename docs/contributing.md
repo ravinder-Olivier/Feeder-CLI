@@ -72,4 +72,4 @@ feeder
 ```
 
 
-[Back Home](https://ravinder-olivier.github.io/Feeder-CLI/index.md)
+[Back Home](https://ravinder-olivier.github.io/Feeder-CLI/index)

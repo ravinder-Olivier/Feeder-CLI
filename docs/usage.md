@@ -16,4 +16,4 @@ Use arrow keys to select
 ```
 
 
-[Back home](https://ravinder-olivier.github.io/Feeder-CLI/index.md)
+[Back home](https://ravinder-olivier.github.io/Feeder-CLI/index)

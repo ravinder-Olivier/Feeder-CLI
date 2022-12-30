@@ -6,9 +6,9 @@
 Feeder-CLI uses your github RSS url to give your dashboard feed in your CLI
 
 
-[Contributing](https://ravinder-olivier.github.io/Feeder-CLI/contributing.md)
+[Contributing](https://ravinder-olivier.github.io/Feeder-CLI/contributing)
 
-[Usage](https://ravinder-olivier.github.io/Feeder-CLI/usage.md)
+[Usage](https://ravinder-olivier.github.io/Feeder-CLI/usage)
 
 [Github](https://github.com/ravinder-Olivier/Feeder-CLI)
 
