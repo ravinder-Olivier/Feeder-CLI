@@ -9,7 +9,7 @@ THIS PROJECT IS STILL IN DEVELOPMENT! NOT ALL FEATURES MAY WORK! Features that a
 ## Install
 
 ```bash
-npm install feeder-cli -g
+npm i feeder-cli -g
 ```
 Usage
 ```bash
