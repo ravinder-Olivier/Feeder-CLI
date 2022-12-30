@@ -106,8 +106,9 @@ yargs(hideBin(process.argv))
     },
     async function () {
       // calls the feeder-functions file
-      const logfeed = await feeder.getfeed()
-      log(logfeed)
+      const logarray = await feeder.getfeed()
+      const logstring = logarray.toString()
+      process.stdout.write(logstring)
     }
   )
   .help()

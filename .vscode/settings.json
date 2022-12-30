@@ -11,8 +11,11 @@
         "getfeed",
         "ghfeed",
         "keytar",
+        "logarray",
         "logfeed",
+        "logstring",
         "newrssurl",
+        "nocomma",
         "promptvalue",
         "simplequirer"
     ]

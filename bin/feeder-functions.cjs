@@ -15,14 +15,14 @@ const getfeed = async () => {
   feedarray.push(feed.title)
   await feed.items.forEach((item) => {
     feedarray.push(`${item.title} - ${item.link}`)
-    feedarray.push('')
+    feedarray.push('\n', '\n')
   })
   const ghfeed = (reverseArray(feedarray))
   return (ghfeed)
 }
-function simplequirer () {
-
+const nocomma = () => {
+  return string.replace(/\s/g, ',');
 }
 
 exports.getfeed = getfeed
-exports.simplequirer = simplequirer
+exports.nocomma = nocomma
