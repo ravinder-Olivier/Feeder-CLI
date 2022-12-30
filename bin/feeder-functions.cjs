@@ -21,7 +21,8 @@ const getfeed = async () => {
   return (ghfeed)
 }
 const nocomma = () => {
-  return string.replace(/\s/g, ',');
+  // NOT FINISHED
+  return string.replace(/\s/g, ',')
 }
 
 exports.getfeed = getfeed
