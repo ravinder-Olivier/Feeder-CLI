@@ -1,6 +1,6 @@
 # Feeder-CLI
 
-![License](https://img.shields.io/github/license/ravinder-Olivier/Feeder-CLI) ![Package Version](https://img.shields.io/github/package-json/v/ravinder-Olivier/feeder-cli)
+![License](https://img.shields.io/github/license/ravinder-Olivier/Feeder-CLI) ![Package Version](https://img.shields.io/github/package-json/v/ravinder-Olivier/feeder-cli) [![Dependency Review](https://github.com/ravinder-Olivier/Feeder-CLI/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/ravinder-Olivier/Feeder-CLI/actions/workflows/dependency-review.yml)
 
 
 THIS PROJECT IS STILL IN DEVELOPMENT! NOT ALL FEATURES MAY WORK! Features that are not working include:

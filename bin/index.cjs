@@ -66,16 +66,24 @@ yargs(hideBin(process.argv))
               'Change Descriptiveness of information displayed in Feed'
             ],
             when: (answers) => answers.manageType === 'Change Display Options'
+          },
+          {
+            name: 'otherPreferences',
+            type: 'list',
+            message: 'Other Preferences',
+            choices: [
+              'Change RSS Engine',
+              ''
+            ],
+            when: (answers) => answers.manageType === 'Other Preferences'
           }
         ])
         .then(async (answer) => {
           // This part is ran after the inquirer prompts
-          const manageType = answer.manageType
-          const changeDisplayoptions = answer.changeDisplayoptions
           log(
             'This part is still under development, thanks for using! Feeder-CLI is an', chalk.underline('open-source project'), ', please consider contributing to keep us Feeding :)'
           )
-          if (manageType === 'Update RSS URL') {
+          if (answer.manageType === 'Update RSS URL') {
             log(
               'Please go to your Github dashboard, right click on the subscribe to your rss feed link address, and click copy link and paste it *without formatting artifacts*'
             )
@@ -88,7 +96,12 @@ yargs(hideBin(process.argv))
               log('Process will soon exit. Thanks for using Feeder-CLI')
               process.exit()
             }
-          } else if (manageType === '') {
+          } else if (answer.manageType === 'Other Preferences') {
+            if (answer.otherPreferences === 'Change RSS Engine') {
+              log('', "This part hasn't been developed yet", '\n', 'This process will exit soon')
+              process.exit()
+            }
+          } else {
             log('This process will exit soon')
             process.exit()
           }
