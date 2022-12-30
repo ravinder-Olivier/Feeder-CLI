@@ -108,7 +108,7 @@ yargs(hideBin(process.argv))
       // calls the feeder-functions file
       const logarray = await feeder.getfeed()
       const logstring = logarray.toString()
-      log(chalk.white(logstring))
+      log(chalk.white(logstring.replaceAll(',', '')))
     }
   )
   .help()
