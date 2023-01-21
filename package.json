@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "chalk": "^4.1.0",
+    "fast-rss-parser": "^0.0.1",
     "inquirer": "^8.2.5",
     "keytar": "^7.9.0",
     "node-fetch": "^2.6.1",

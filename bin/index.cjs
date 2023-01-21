@@ -117,10 +117,8 @@ yargs(hideBin(process.argv))
         describe: 'Check your feed'
       })
     },
-    async function () {
-      // calls the feeder-functions file to get the feed
-      log(await feeder.getfeed())
-    }
+      // calls feeder functions file
+    async function () {log(await feeder.rssengine())}
   )
   .help()
   .demandCommand(
