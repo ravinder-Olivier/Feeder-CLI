@@ -3,5 +3,6 @@ dist/
 release/
 docs/
 .eslintrc.json
-.github
-.vscode
+.github/
+.vscode/
+.idea/
