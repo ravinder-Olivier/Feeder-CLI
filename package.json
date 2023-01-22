@@ -20,10 +20,13 @@
   "homepage": "https://github.com/ravinder-Olivier/Feeder-CLI#readme",
   "bin": {
     "feeder": "./bin/index.cjs",
-    "feeder-settings": "./bin/feeder-settings.json"
+    "feeder-settings": "./bin/feeder-settings.json",
+    "feeder-engines": "./bin/api/feeder-engines.cjs",
+    "engine-functions": "./bin/api/engine-functions.cjs"
   },
   "dependencies": {
     "chalk": "^4.1.0",
+    "edit-json-file": "^1.7.0",
     "fast-rss-parser": "^0.0.1",
     "inquirer": "^8.2.5",
     "keytar": "^7.9.0",

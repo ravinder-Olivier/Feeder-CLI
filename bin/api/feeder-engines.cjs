@@ -1,18 +1,20 @@
 // Feed Function
-const inquirer = require("inquirer");
-const chalk = require("chalk");
-const prompt = require("prompt");
-const keytar = require("keytar");
-const {hideBin} = require("yargs/helpers");
-const getfeed = async () => {
 
+const keytar = require("keytar");
+const {parse} = require("fast-rss-parser");
+const RSSParser = require("rss-parser");
+const fasterRss = async () => {
+
+return 'still under development'
 }
 const rssengine = async () => {
   const chalk = require('chalk')
   const RSSParser = require('rss-parser')
-  const keytar = require('keytar')
   const log = console.log
   const reverseArray = require('reverse-array')
+  const inquirer = require("inquirer");
+  const keytar = require("keytar");
+
   log(chalk.white("Here's your feed!"))
   // below async function below gets the keytar password, if there's no password present the program will error at the getfeed function
   const feedUrl = await keytar.getPassword('Feeder-CLI', 'github')
@@ -33,5 +35,6 @@ const rssengine = async () => {
   ghfeed = chalk.white(ghfeed)
   return (ghfeed)
 }
-exports.getfeed = getfeed
+
+exports.fasterRss = fasterRss
 exports.rssengine = rssengine

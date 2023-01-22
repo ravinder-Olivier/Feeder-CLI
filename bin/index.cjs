@@ -27,8 +27,7 @@ const log = console.log
 const inquirer = require('inquirer')
 const reverseArray = require('reverse-array')
 const fs = require('fs')
-const feeder = require('./feeder-functions.cjs')
-
+const feeder = require('./api/feeder-functions.cjs')
 // Yargs is used, only yargs commands will execute, ex] feeder manage, or feeder check, not using an option will result in the options listed rather then any function
 
 yargs(hideBin(process.argv))
@@ -118,7 +117,7 @@ yargs(hideBin(process.argv))
       })
     },
       // calls feeder functions file
-    async function () {log(await feeder.rssengine())}
+    async function () {log(await feeder.getFeed())}
   )
   .help()
   .demandCommand(
