@@ -32,9 +32,9 @@ _In project directory run:_
 
 ```bash
 # Manage RSS URL
-feeder manage
+node . manage
 # Run Check
-feeder
+node . check
 ```
 
 REMINDER: This project is still under development, key features may still not be fully developed!
