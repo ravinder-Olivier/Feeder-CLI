@@ -27,7 +27,7 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "edit-json-file": "^1.7.0",
-    "fast-rss-parser": "^0.0.1",
+    "fast-rss-parser": "^0.0.2",
     "inquirer": "^8.2.5",
     "keytar": "^7.9.0",
     "node-fetch": "^3.3.2",
