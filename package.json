@@ -2,7 +2,7 @@
   "name": "feeder-cli",
   "version": "4.8.1",
   "description": "A CLI app for checking your github dashboard from anywhere! Powered by Node",
-  "main": "./bin/index.cjs",
+  "main": "./src/index.cjs",
   "scripts": {
     "check": "node . check",
     "manage": "node . manage"
@@ -19,16 +19,16 @@
   },
   "homepage": "https://github.com/ravinder-Olivier/Feeder-CLI#readme",
   "bin": {
-    "feeder": "./bin/index.cjs",
-    "feeder-settings": "./bin/feeder-settings.json",
-    "feeder-engines": "./bin/api/feeder-engines.cjs",
-    "engine-functions": "./bin/api/engine-functions.cjs"
+    "feeder": "./src/index.cjs",
+    "feeder-settings": "./src/feeder-settings.json",
+    "feeder-engines": "./src/api/feeder-engines.cjs",
+    "engine-functions": "./src/api/engine-functions.cjs"
   },
   "dependencies": {
-    "chalk": "^4.1.0",
+    "ansi-colors": "^4.1.3",
     "edit-json-file": "^1.7.0",
     "fast-rss-parser": "^0.0.2",
-    "inquirer": "^8.2.5",
+    "inquirer": "9.2.10",
     "keytar": "^7.9.0",
     "node-fetch": "^3.3.2",
     "prompt": "^1.3.0",
