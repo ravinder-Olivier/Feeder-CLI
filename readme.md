@@ -23,7 +23,7 @@ The code itself is in the /bin folder due to the CLI nature of the project.
 To quickly test code while developing run 'node .',
 
 ```bash
-npm install
+npm install .
 npm install . -g 
 ```
 
