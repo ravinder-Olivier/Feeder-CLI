@@ -8,6 +8,12 @@ THIS PROJECT IS STILL IN DEVELOPMENT! NOT ALL FEATURES MAY WORK! Features that a
 
 ## Install
 
+NOTE: If on linux will need to install libsecret:
+
+- Debian/Ubuntu: sudo apt-get install libsecret-1-dev
+- Red Hat-based: sudo yum install libsecret-devel
+- Arch Linux: sudo pacman -S libsecret
+
 ```bash
 npm i feeder-cli -g
 ```
