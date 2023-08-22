@@ -2,8 +2,8 @@
 
 ![License](https://img.shields.io/github/license/ravinder-Olivier/Feeder-CLI) ![Package Version](https://img.shields.io/github/package-json/v/ravinder-Olivier/feeder-cli) [![Dependency Review](https://github.com/ravinder-Olivier/Feeder-CLI/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/ravinder-Olivier/Feeder-CLI/actions/workflows/dependency-review.yml)
 
-
 THIS PROJECT IS STILL IN DEVELOPMENT! NOT ALL FEATURES MAY WORK! Features that are not working include:
+
 - Changing Feed Display settings
 
 ## Install
@@ -11,7 +11,9 @@ THIS PROJECT IS STILL IN DEVELOPMENT! NOT ALL FEATURES MAY WORK! Features that a
 ```bash
 npm i feeder-cli -g
 ```
+
 Usage
+
 ```bash
 feeder check
 feeder manage
@@ -24,7 +26,7 @@ To quickly test code while developing run 'node .',
 
 ```bash
 npm install .
-npm install . -g 
+npm install . -g
 ```
 
 Testing:
