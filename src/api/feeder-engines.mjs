@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 // Feed Function
 
 import * as keytar from 'keytar'
 import * as parse from 'fast-rss-parser'
 import RSSParser from 'rss-parser'
-import reverseArray from 'reverse-array'
+import reverseArray from 'reverse-array-new'
 import c from 'ansi-colors'
 export const fasterRss = async () => {
   const feedUrl = await keytar.getPassword('Feeder-CLI', 'github')

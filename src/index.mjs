@@ -19,13 +19,12 @@ import { hideBin } from 'yargs/helpers'
 import prompt from 'prompt'
 import c from 'ansi-colors'
 import inquirer from 'inquirer'
-import * as fs from 'fs';
+import * as fs from 'fs'
 import * as feeder from './api/feeder-functions.mjs'
 import * as keytar from 'keytar'
 import RSSParser from 'rss-parser'
 const argv = yargs(hideBin(process.argv)).argv
 const log = console.log
-
 
 yargs(hideBin(process.argv))
   .command(
@@ -114,7 +113,7 @@ yargs(hideBin(process.argv))
       })
     },
     // calls feeder functions file
-    async function () {log(await feeder.getFeed())}
+    async function () { log(await feeder.getFeed()) }
   )
   .help()
   .demandCommand(
