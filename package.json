@@ -1,6 +1,6 @@
 {
   "name": "feeder-cli",
-  "version": "4.8.1",
+  "version": "4.8.2",
   "description": "A CLI app for checking your github dashboard from anywhere! Powered by Node",
   "main": "./src/index.cjs",
   "scripts": {
